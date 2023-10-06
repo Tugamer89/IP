@@ -13,8 +13,8 @@ int main() {
     float area = heigh * base;
     float peri = (heigh + base)*2;
 
-    cout << "Area: " << area << endl;
-    cout << "Perimetro: " << peri << endl;
+    cout << "Area = " << area << endl;
+    cout << "Perimetro = " << peri << endl;
 
     return 0;
 }

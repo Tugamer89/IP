@@ -8,14 +8,14 @@ int main() {
     cout << "Inserire tre variabili float: ";
     cin >> a >> b >> c;
 
-    cout << "Prima dello scambio: a=" << a << " b=" << b << " c=" << c << endl;
+    cout << "Prima dello scambio: a = " << a << ", b = " << b << ", c = " << c << endl;
 
     float temp_a = a;
     a = b;
     b = c;
     c = temp_a;
 
-    cout << "Dopo lo scambio: a=" << a << " b=" << b << " c=" << c << endl;
+    cout << "Dopo lo scambio: a = " << a << ", b = " << b << ", c = " << c << endl;
 
     return 0;
 }

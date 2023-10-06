@@ -8,13 +8,13 @@ int main() {
     cout << "Inserire due caratteri: ";
     cin >> a >> b;
 
-    cout << "Prima dello scambio: a='" << a << "' b='" << b << "'\n";
+    cout << "Prima dello scambio: a = '" << a << "', b = '" << b << "'\n";
 
     char c = a;
     a = b;
     b = c;
 
-    cout << "Dopo lo scambio: a='" << a << "' b='" << b << "'\n";
+    cout << "Dopo lo scambio: a = '" << a << "', b = '" << b << "'\n";
 
     return 0;
 }
