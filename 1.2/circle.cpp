@@ -10,9 +10,9 @@ int main() {
     cin >> raggio;
 
     float area = PI * raggio * raggio;
-    float circonferenza = 2 * PI * raggio;
+    float crfc = 2 * PI * raggio;
     cout << "Area = " << area << endl;
-    cout << "Circonferenza = " << circonferenza << endl;
+    cout << "Circonferenza = " << crfc << endl;
 
     return 0;
 }

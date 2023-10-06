@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     float a, b, c;
 
-    cout << "Inserisci tre variabili float: ";
+    cout << "Inserire tre variabili float: ";
     cin >> a >> b >> c;
 
     cout << "Prima dello scambio: a=" << a << " b=" << b << " c=" << c << endl;

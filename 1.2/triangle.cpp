@@ -11,7 +11,7 @@ int main() {
     cin >> altezza;
 
     float area = altezza * base / 2;
-    cout << "Area = " << area;
+    cout << "Area = " << area << endl;
 
     return 0;
 }

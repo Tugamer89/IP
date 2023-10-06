@@ -3,15 +3,15 @@
 using namespace std;
 
 int main() {
-    float altezza, base;
+    float base, heigh;
     
-    cout << "Inserire altezza: ";
-    cin >> altezza;
     cout << "Inserire base: ";
     cin >> base;
-
-    float area = altezza*base;
-    float peri = (altezza + base)*2;
+    cout << "Inserire altezza: ";
+    cin >> heigh;
+    
+    float area = heigh * base;
+    float peri = (heigh + base)*2;
 
     cout << "Area: " << area << endl;
     cout << "Perimetro: " << peri << endl;

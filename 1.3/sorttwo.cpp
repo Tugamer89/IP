@@ -10,7 +10,7 @@ int main() {
     
     int max = (a + b + abs(a - b)) / 2;
     int min = (a + b - abs(a - b)) / 2;
-    
     cout << "Numeri ordinati: " << min << " " << max << endl;
+
     return 0;
 }

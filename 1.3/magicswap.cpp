@@ -15,5 +15,6 @@ int main() {
     a ^= b;
 
     cout << "Dopo lo scambio: a=" << a << " b=" << b << endl;
+    
     return 0;
 }

@@ -10,5 +10,6 @@ int main() {
     cout << "Dieci mezzi è compreso fra zero escluso e dieci incluso = " << (10/2 > 0 && 10/2 <= 10) << endl;
     cout << "Non è vero che tre è maggiore di due e minore di uno = " << !(3 > 2 && 3 > 1) << endl;
     cout << "Tre minore di meno cinque implica sette maggiore di zero = " << (!(3 < -5) || 7 > 0) << endl;
+    
     return 0;
 }
