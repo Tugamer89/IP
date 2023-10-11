@@ -22,54 +22,54 @@ int main() {
     cout << "Sono le ore ";
 
     switch (hours) {
-    case 1:
-        cout << "una";
-        break;
-    case 2:
-        cout << "due";
-        break;
-    case 3:
-        cout << "tre";
-        break;
-    case 4:
-        cout << "quattro";
-        break;
-    case 5:
-        cout << "cinque";
-        break;
-    case 6:
-        cout << "sei";
-        break;
-    case 7:
-        cout << "sette";
-        break;
-    case 8:
-        cout << "otto";
-        break;
-    case 9:
-        cout << "nove";
-        break;
-    case 10:
-        cout << "dieci";
-        break;
-    case 11:
-        cout << "undici";
-        break;
-    case 12:
-        cout << "dodici";
-        break;
+        case 1:
+            cout << "una";
+            break;
+        case 2:
+            cout << "due";
+            break;
+        case 3:
+            cout << "tre";
+            break;
+        case 4:
+            cout << "quattro";
+            break;
+        case 5:
+            cout << "cinque";
+            break;
+        case 6:
+            cout << "sei";
+            break;
+        case 7:
+            cout << "sette";
+            break;
+        case 8:
+            cout << "otto";
+            break;
+        case 9:
+            cout << "nove";
+            break;
+        case 10:
+            cout << "dieci";
+            break;
+        case 11:
+            cout << "undici";
+            break;
+        case 12:
+            cout << "dodici";
+            break;
     }
 
     switch (minutes / 15) {
-    case 1:
-        cout << " e un quarto"; 
-        break;
-    case 2:
-        cout << " e mezza";
-        break;
-    case 3:
-        cout << " e mezza";
-        break;
+        case 1:
+            cout << " e un quarto"; 
+            break;
+        case 2:
+            cout << " e mezza";
+            break;
+        case 3:
+            cout << " e mezza";
+            break;
     }
 
     if (minutes % 15 != 0)
