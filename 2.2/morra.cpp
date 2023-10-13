@@ -50,7 +50,7 @@ int main() {
 
     // gestione output
     if (winner != 0)
-        cout << "Ha vinto il giocatore " << winner << "!" << endl;
+        cout << "Giocatore " << winner << " hai vinto!" << endl;
     else
         cout << "Pareggio!" << endl;
 
