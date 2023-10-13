@@ -46,7 +46,6 @@ int main() {
             break;
         default:
             cerr << "Il mese inserito non esiste!" << endl;
-            break;
     }
 
     return 0;
