@@ -12,7 +12,7 @@ int main() {
     cin >> Temp;
 
     if (between(-20, Temp, 0))
-        cout << "Freddo dannato" << endl;
+        cout << "Freddo incredibile" << endl;
 
     else if (between(1, Temp, 15))
         cout << "Freddo" << endl;
