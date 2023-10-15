@@ -7,8 +7,8 @@ int main() {
 
     cout << "Inserire ore: ";
     cin >> hours;
-    if (hours > 12 || hours < 1) {
-        cerr << "Le ore devono essere comprese tra 1 e 12 inclusi";
+    if (hours > 23 || hours < 0) {
+        cerr << "Le ore devono essere comprese tra 0 e 23 inclusi";
         return -1;
     }
     
@@ -22,8 +22,11 @@ int main() {
     cout << "Sono le ore ";
 
     switch (hours) {
+        case 0:
+            cout << "mezzanotte";
+            break;
         case 1:
-            cout << "una";
+            cout << "l'una";
             break;
         case 2:
             cout << "due";
@@ -56,7 +59,40 @@ int main() {
             cout << "undici";
             break;
         case 12:
-            cout << "dodici";
+            cout << "mezzogiorno";
+            break;
+        case 13:
+            cout << "tredici";
+            break;
+        case 14:
+            cout << "quattordici";
+            break;
+        case 15:
+            cout << "quindici";
+            break;
+        case 16:
+            cout << "sedici";
+            break;
+        case 17:
+            cout << "diciassette";
+            break;
+        case 18:
+            cout << "diciotto";
+            break;
+        case 19:
+            cout << "diciannove";
+            break;
+        case 20:
+            cout << "venti";
+            break;
+        case 21:
+            cout << "ventuno";
+            break;
+        case 22:
+            cout << "ventidue";
+            break;
+        case 23:
+            cout << "ventitre";
             break;
     }
 
@@ -68,12 +104,12 @@ int main() {
             cout << " e mezza";
             break;
         case 3:
-            cout << " e mezza";
+            cout << " e tre quarti";
             break;
     }
 
     if (minutes % 15 != 0)
-        cout << " circa";
+        cout << " passate";
 
     cout << endl;
 
