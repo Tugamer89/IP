@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main() {
+int main(){
     cout << "Inserisci un numero maggiore di 0: ";
     int length;
     cin >> length;
