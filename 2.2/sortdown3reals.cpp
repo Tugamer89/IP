@@ -7,26 +7,25 @@ int main() {
     cout << "Inserire tre numeri reali: ";
     cin >> a >> b >> c;
 
-    cout << "Numeri ordinati: ";
+    float nMin, nMid, nMax;
 
     if (a >= b && a >= c) {
-        if (b >= c)
-            cout << a << " " << b << " " << c << endl;
-        else
-            cout << a << " " << c << " " << b << endl;
+        nMax = a;
+        nMid = max(b, c);
+        nMin = min(b, c);
     }
     else if (b >= a && b >= c) {
-        if (a >= c)
-            cout << b << " " << a << " " << c << endl;
-        else
-            cout << b << " " << c << " " << a << endl;
+        nMax = b;
+        nMid = max(a, c);
+        nMin = min(a, c);
     }
     else {
-        if (b >= a)
-            cout << c << " " << b << " " << a << endl;
-        else
-            cout << c << " " << a << " " << b << endl;
+        nMax = c;
+        nMid = max(a, b);
+        nMin = min(a, b);
     }
+
+    cout << "Numeri ordinati: " << nMax << " " << nMid << " " << nMin << endl;
 
     return 0;
 }
