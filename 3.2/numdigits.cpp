@@ -5,17 +5,15 @@ using namespace std;
 
 int main() {
     int num;
-    cout << "Inserire un numero intero positivo: ";
+    cout << "Inserisci un numero intero strettamente positivo: ";
     cin >> num;
 
-    while (num < 0) {
-        cout << "Hai inserito un numero negativo, inserisci un numero intero positivo: ";
-        cin >> num;
-    }
-
-    int numDigits = log10(num) + 1;
-
-    cout << "Il numero " << num << " ha " << numDigits << " cifre" << endl;
+    if (num <= 0)
+        cout << "Il numero inserito NON e' valido" << endl;
+    else if (num < 10)
+        cout << "Il numero inserito e' composto da 1 cifra" << endl;
+    else
+        cout << "Il numero inserito e' composto da " << static_cast<int>(log10(num)) + 1 << " cifre" << endl;
 
     return 0;
 }
