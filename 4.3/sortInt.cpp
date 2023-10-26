@@ -1,13 +1,16 @@
 #include <iostream>
 
-#define N 10
+#define MAXN 10000
 
 using namespace std;
 
 int main() {
-    int arr[N], dest[N];
-    cout << "Inserire " << N << " elementi:\n";
-
+    int N;
+    int arr[MAXN], dest[MAXN];
+    
+    cout << "Inserire numero di elementi da inserire: ";
+    cin >> N;
+    
     for (int i = 0; i < N; ++i) {
         cout << "Inserire " << i+1 << "-esimo elemento: ";
         cin >> arr[i];
@@ -16,12 +19,10 @@ int main() {
 
     for (int i = 1; i < N; ++i) {
         int elem = dest[i];
-        int j = i-1;
+        int j;
 
-        while (j >= 0 && dest[j] > elem) {
+        for (j = i-1; j >= 0 && dest[j] > elem; --j)
             dest[j+1] = dest[j];
-            --j;
-        }
 
         dest[j+1] = elem;
     }
