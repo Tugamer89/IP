@@ -6,25 +6,26 @@ using namespace std;
 
 int main() {
     int N;
-    float arr[MAXN];
+    int source[MAXN], dest[MAXN];
 
     cout << "Inserire numero di elementi da inserire: ";
     cin >> N;
     
     for (int i = 0; i < N; ++i) {
         cout << "Inserire " << i+1 << "-esimo elemento: ";
-        cin >> arr[i];
+        cin >> source[i];
     }
 
-    for (int i = 0; i < N/2; ++i) {
-        float tmp = arr[i];
-        arr[i] = arr[N-i-1];
-        arr[N-i-1] = tmp;
-    }
+    for (int i = 0; i < N; ++i) 
+        dest[N-i-1] = source[i];
 
-    cout << "\nArray rovesciato:" << endl;
+    cout << "Source: " << endl;
     for (int i = 0; i < N; ++i)
-        cout << "arr[" << i << "] è " << arr[i] << endl;    
+        cout << source[i] << " ";
+    
+    cout << "\nDest: " << endl;
+    for (int i = 0; i < N; ++i)
+        cout << dest[i] << " ";
     
     return 0;
 }
