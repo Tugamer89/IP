@@ -16,15 +16,10 @@ int main() {
         cin >> arr[i];
     }
 
-    for (int i = 1; i < N; ++i) {
-        int elem = arr[i];
-        int j;
-
-        for (j = i-1; j >= 0 && arr[j] > elem; --j)
-            arr[j+1] = arr[j];
-
-        arr[j+1] = elem;
-    }
+    for (int i = 0; i < N-1; ++i)
+        for (int j = 0; j < N-i-1; ++j)
+            if (arr[j] > arr[j+1])
+                swap(arr[j], arr[j+1]);
 
     cout << "\nArray ordinato:\n";
     for (int i = 0; i < N; ++i)

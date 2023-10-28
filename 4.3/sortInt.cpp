@@ -17,19 +17,14 @@ int main() {
         dest[i] = arr[i];
     }
 
-    for (int i = 1; i < N; ++i) {
-        int elem = dest[i];
-        int j;
-
-        for (j = i-1; j >= 0 && dest[j] > elem; --j)
-            dest[j+1] = dest[j];
-
-        dest[j+1] = elem;
-    }
+    for (int i = 0; i < N-1; ++i)
+        for (int j = 0; j < N-i-1; ++j)
+            if (dest[j] > dest[j+1])
+                swap(dest[j], dest[j+1]);
 
     cout << "\nArray ordinato:\n";
     for (int i = 0; i < N; ++i)
-        cout << dest[i];    
+        cout << dest[i] << " ";    
     cout << endl;
 
     return 0;
