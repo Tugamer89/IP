@@ -11,7 +11,7 @@ int main() {
         cerr << "Avevo detto positivo!" << endl;
         return 7;
     }
-    else if (n > 65) {
+    else if (n > 65) { //not required
         cerr << "Troppo grande!" << endl;
         return 8;
     }
