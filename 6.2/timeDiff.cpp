@@ -3,29 +3,25 @@
 using namespace std;
 
 struct Time {
-    unsigned int seconds;
-    unsigned int minutes;
-    unsigned int hours;
-
-    bool operator>(const Time& other) const {
-        if (hours > other.hours)
-            return true;
-        if (hours < other.hours)
-            return false;
-
-        if (minutes > other.minutes)
-            return true;
-        if (minutes < other.minutes)
-            return false;
-
-        if (seconds > other.seconds)
-            return true;
-
-        return false;
-    }
+    unsigned int seconds = 0;
+    unsigned int minutes = 0;
+    unsigned int hours = 0;
 
     bool operator<=(const Time& other) const {
-        return !operator>(other);
+        if (hours > other.hours)
+            return false;
+        if (hours < other.hours)
+            return true;
+
+        if (minutes > other.minutes)
+            return false;
+        if (minutes < other.minutes)
+            return true;
+
+        if (seconds > other.seconds)
+            return false;
+
+        return true;
     }
 
     Time operator-(const Time& other) const {
@@ -44,14 +40,14 @@ struct Time {
         } else
             newTime.minutes = minutes - (other.minutes + borrow--);
 
-        newTime.hours = hours - (other.hours + borrow);
+        newTime.hours = hours - (other.hours + borrow * (borrow > 0) );
 
         return newTime;
     }
 };
 
 static inline bool isIncorrectTime(const Time& time) {
-    return time.minutes >= 60 || time.minutes < 0 || time.seconds >= 60 || time.seconds < 0 || time.hours >= 24 || time.hours < 0;
+    return time.minutes > 59 || time.minutes < 0 || time.seconds > 59 || time.seconds < 0 || time.hours > 23 || time.hours < 0;
 }
 
 int main() {

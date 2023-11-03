@@ -4,16 +4,16 @@
 using namespace std;
 
 int main() {
-    const int N = 8;
+    const int N = 10;
     bool binNum[N];
     int decNum;
 
     cout << "Inserire un numero intero positivo minore di " << pow(2, N) << ": ";
     cin >> decNum;
 
-    while (decNum < 0 || decNum >= pow(2, N)) {
-        cout << "Hai inserito un numero negativo o troppo grande, inserisci un numero intero positivo: ";
-        cin >> decNum;
+    if (decNum < 0 || decNum >= pow(2, N)) {
+        cout << "Numero NON valido" << endl;
+        return 1;
     }
 
     int tmp = decNum;
@@ -22,7 +22,6 @@ int main() {
         tmp /= 2;
     }
 
-    cout << decNum << " verrà stampato ";
     for (int elem : binNum)
         cout << elem;
     cout << endl;
