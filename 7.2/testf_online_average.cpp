@@ -9,13 +9,11 @@ double onlineAverage() {
 
     do {
         double num;
-        cout << "Inserire il primo numero: ";
+        cout << "Inserire il " << ++nums << "-esimo numero: ";
         cin >> num;
-
         sum += num;
-        ++nums;
 
-        cout << "Inserire n per terminare l'inserimento: ";
+        cout << "Inserire 'n' per terminare l'inserimento: ";
         cin >> res;
     } while(res != 'n');
 
