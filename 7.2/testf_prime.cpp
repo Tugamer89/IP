@@ -7,7 +7,7 @@ bool isPrime(int n) {
     if (n < 2)
         return false;
 
-    for (int i = 2; i < sqrt(n); ++i)
+    for (int i = 2; i <= sqrt(n); ++i)
         if (n % i == 0)
             return false;
 
@@ -15,7 +15,7 @@ bool isPrime(int n) {
 }
 
 int main() {
-    int elementsToTest[] = {-5, 0, 1, 2, 5, 27, 31, 14, 3, 15, 89, 3769};
+    int elementsToTest[] = {-5, 0, 1, 2, 5, 25, 27, 31, 14, 3, 15, 89, 3769};
 
     for (int elem : elementsToTest)
         cout << "Il numero " << elem << (isPrime(elem) ? "" : " non") << " è primo!" << endl;
