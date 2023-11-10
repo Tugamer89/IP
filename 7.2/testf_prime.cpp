@@ -15,7 +15,7 @@ bool isPrime(int n) {
 }
 
 int main() {
-    int elementsToTest[] = {-5, 0, 1, 2, 14, 3, 15, 89};
+    int elementsToTest[] = {-5, 0, 1, 2, 5, 27, 31, 14, 3, 15, 89, 3769};
 
     for (int elem : elementsToTest)
         cout << "Il numero " << elem << (isPrime(elem) ? "" : " non") << " è primo!" << endl;

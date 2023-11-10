@@ -3,7 +3,7 @@
 using namespace std;
 
 void replicate(int N, char c) {
-    for (int i = 1; i < N; ++i)
+    for (int i = 1; i <= N; ++i)
         cout << c;
 }
 

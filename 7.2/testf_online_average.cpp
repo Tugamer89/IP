@@ -2,10 +2,14 @@
 
 using namespace std;
 
+static inline bool isAnswerValid(char c) {
+    return c == 'n' || c == 'y';
+}
+
 double onlineAverage() {
     int nums = 0;
     double sum = 0;
-    char res;
+    char res = 0;
 
     do {
         double num;
@@ -13,11 +17,17 @@ double onlineAverage() {
         cin >> num;
         sum += num;
 
-        cout << "Inserire 'n' per terminare l'inserimento: ";
-        cin >> res;
+        do {
+            if (!isAnswerValid(res) && res != 0)
+                cout << "ERRORE: il carattere inserito non è valido!" << endl;
+
+            cout << "Continuare l'inserimento? (y|n): ";
+            cin >> res;
+        } while(!isAnswerValid(res));
+
     } while(res != 'n');
 
-    return nums / sum;
+    return sum / nums;
 }
 
 int main() {

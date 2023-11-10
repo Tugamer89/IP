@@ -3,22 +3,17 @@
 
 using namespace std;
 
-struct Point {
-    double x;
-    double y;
-
-    bool operator==(const Point& other) const {
-        return x == other.x && y == other.y;
-    }
+struct Punto {
+    double x, y;
 };
 
-double dist(const Point& p1, const Point& p2) {
+double dist(const Punto& p1, const Punto& p2) {
     return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 }
 
 int main() {
     const int N = 3;
-    Point points[N];
+    Punto points[N];
 
     for (int i = 0; i < N; ++i) {
         cout << "Inserire le coordinate (x y) del " << i+1 << "° punto: ";
