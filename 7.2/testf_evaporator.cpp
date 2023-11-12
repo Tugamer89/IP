@@ -17,7 +17,7 @@ int remainingDays(float initialLiters, int dailyEvapPercentage, float minLiters)
     */
 
     // static programming
-    return max(0, (100 - (minLiters/initialLiters * 100)) / dailyEvapPercentage + 1);
+    return max(0, static_cast<int>((100 - (minLiters/initialLiters * 100)) / dailyEvapPercentage + 1));
 }
 
 int main() {
