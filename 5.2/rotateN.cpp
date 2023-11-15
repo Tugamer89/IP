@@ -19,7 +19,7 @@ int main() {
     int times = (N <= 0) ? D - (-N % D) : N % D;
     for (int i = 0; i < times; ++i) {
         int first = vec[D-1];
-        for (int i = D-1; i > 0; --i)
+        for (int j = D-1; j > 0; --j)
             vec[i] = vec[i-1];
         vec[0] = first;
     }
