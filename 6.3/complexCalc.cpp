@@ -30,8 +30,6 @@ struct Complex {
 
         if (real < 0)
             argument += 90 * (immaginary > 0 ? 1 : -2);
-        else if (immaginary < 0)
-            argument -= 90;
     }
 
     string cartesian() {
