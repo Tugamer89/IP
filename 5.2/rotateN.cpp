@@ -20,7 +20,7 @@ int main() {
     for (int i = 0; i < times; ++i) {
         int first = vec[D-1];
         for (int j = D-1; j > 0; --j)
-            vec[i] = vec[i-1];
+            vec[j] = vec[j-1];
         vec[0] = first;
     }
 
