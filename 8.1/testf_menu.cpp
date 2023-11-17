@@ -13,7 +13,7 @@ int get_choice(int max){
     int scelta;
 
     do {
-        cout << "Inserisci una scelta fra 1 e " << max << endl;
+        cout << "Inserisci una scelta fra 1 e " << max << ": ";
         cin >> scelta;
     } while(scelta < 1 || scelta > max);
 
@@ -21,7 +21,7 @@ int get_choice(int max){
 }
 
 void print_choice(int n, string ch1, string ch2, string ch3, string ch4){
-    cout << "\nScelta effettuata: ";
+    cout << "Scelta effettuata: ";
 
     switch(n) {
     case 1:
@@ -36,6 +36,8 @@ void print_choice(int n, string ch1, string ch2, string ch3, string ch4){
     case 4:
         cout << ch4;
     }
+
+    cout << endl << endl;
 }
 
 int use_menu(string choice1, string choice2, string choice3, string choice4){
