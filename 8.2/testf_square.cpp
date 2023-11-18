@@ -4,7 +4,7 @@ using namespace std;
 
 void square(int n) {
     if (n <= 0)
-        throw (string)"Errore valore < 1";
+        throw (string)"lato del quadrato negativo o nullo";
 
     for (int i = 0; i < n; ++i)
         cout << "x ";
@@ -32,7 +32,7 @@ int main() {
         square(len);
     }
     catch (string& err) {
-        cerr << err << endl;
+        cerr << "\e[31mERRORE: " << err << "!\e[0m" << endl;
     }
 
     return 0;
