@@ -12,10 +12,8 @@ struct OutOfRangeError {
     OutOfRangeError(string fName, string pName, string pValue, string cError) : functionName(fName), paramName(pName), paramValue(pValue), customError(cError) {}
 };
 
-int numDigits(int n) {
-    if (n == 0)
-        return 1;
-    return log10(n) + 1;
+static inline int numDigits(int n) {
+    return n == 0 ? 1 : (log10(abs(n)) + 1);
 }
 
 bool hasDigit(int n, int d) {
