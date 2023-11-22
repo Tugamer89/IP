@@ -12,10 +12,6 @@ struct OutOfRangeError {
     OutOfRangeError(string fName, string pName, string pValue, string cError) : functionName(fName), paramName(pName), paramValue(pValue), customError(cError) {}
 };
 
-static inline int numDigits(int n) {
-    return n == 0 ? 1 : (log10(abs(n)) + 1);
-}
-
 bool hasDigit(int n, int d) {
     while (n > 0) {
         if (n%10 == d)
@@ -26,21 +22,12 @@ bool hasDigit(int n, int d) {
     return false;
 }
 
-bool hasSequence(int n, int d, bool isFirstCheck = true, int firstD = -1) {
-    if (n == d)
-        return true;
+bool hasSequence(int n, int d) {
+    const int exp = d == 0 ? 1 : (log10(d) + 1);
 
-    if (numDigits(n) < numDigits(d))
-        return false;
-
-    while (n > 0) {
-        if (n%10 == d%10) {
-            if (d < 10)
-                return true;
-            return hasSequence(n/10, d/10, false, d);
-        }
-        else if (!isFirstCheck)
-            return hasSequence(n, firstD, true, firstD);
+    while (n >= d) {
+        if (d == n % static_cast<int>(pow(10, exp)))
+            return true;
 
         n /= 10;
     }
