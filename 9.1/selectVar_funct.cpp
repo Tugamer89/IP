@@ -1,5 +1,5 @@
 #include <iostream>
-#include "selectVar_func.h"
+#include "selectVar_funct.h"
 
 using namespace std;
 

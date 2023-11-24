@@ -1,5 +1,5 @@
 #include <iostream>
-#include "shiftArray_func.h"
+#include "shiftRightArray_funct.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int main() {
         cin >> vec[i];
     }
 
-    shift(vec, D);
+    shiftRightArray(vec, D);
 
     cout << "Vettore rotato: ";
     for (int elem : vec)

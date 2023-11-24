@@ -1,6 +1,6 @@
-#include "shiftArray_func.h"
+#include "shiftRightArray_funct.h"
 
-void shift(int* t, int size) {
+void shiftRightArray(int* t, int size) {
     int first = t[size-1];
     for (int i = size-1; i > 0; --i)
         t[i] = t[i-1];
