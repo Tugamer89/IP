@@ -27,7 +27,9 @@ char* selectVar(char& a, char& b, char& c) {
     cout << "Scegli fra queste variabili: " << a << ", " << b << ", " << c << endl;
     cout << "potrai cambiare idea in seguito e sceglierne una diversa che preferisci" << endl;
 
-    p = proposeVar("Vuoi la prima (y/n)? ", a);
+    tmp = proposeVar("Vuoi la prima (y/n)? ", a);
+    if (tmp != nullptr)
+        p = tmp;
 
     tmp = proposeVar("Preferisci la seconda (y/n)? ", b);
     if (tmp != nullptr)
