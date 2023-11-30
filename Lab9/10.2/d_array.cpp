@@ -38,32 +38,29 @@ void delete_d_array(dynamic_array& d) {
 }
 
 void create_d_array(dynamic_array& d, int size, double value) {
-    if (size <= 0)
-        throw (string)"La dimensione indicata è negativa o nulla";
+    if (size < 0)
+        throw (string)"La dimensione indicata è negativa";
     
     if (d.size != 0)
         delete_d_array(d);
 
-    if (size > 0) {
-        d.size = size;
-        d.store = new double[size];
+    d.size = size;
+    d.store = new double[size];
 
-        for (int i = 0; i < size; ++i)
-            d.store[i] = value;
-    }
-
+    for (int i = 0; i < size; ++i)
+        d.store[i] = value;
 }
 
 void set_d_array_element(dynamic_array& d, unsigned int index, double value) {
-    if (index < 0 || index >= d.size)
-        throw (string)"L'indice è negativo o maggiore della dimensione dell'array";
+    if (index >= d.size)
+        throw (string)"L'indice è maggiore della dimensione dell'array";
 
     d.store[index] = value;
 }
 
 double get_d_array_element(const dynamic_array& d, unsigned int index) {
-    if (index < 0 || index >= d.size)
-        throw (string)"L'indice è negativo o maggiore della dimensione dell'array";
+    if (index >= d.size)
+        throw (string)"L'indice è maggiore della dimensione dell'array";
 
     return d.store[index];
 }
