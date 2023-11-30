@@ -70,7 +70,7 @@ void concat_d_arrays(dynamic_array& t1, dynamic_array& t2, dynamic_array& t3) {
     t3.store = new double[t3.size];
 
     for (int i = 0; i < t3.size; ++i)
-        t3.store[i] = (i < t1.size ? t1.store[i] : t2.store[i%t1.size]);
+        t3.store[i] = (i < t1.size ? t1.store[i] : t2.store[i - t1.size]);
 }
 
 void sort_d_array(dynamic_array& d) {
