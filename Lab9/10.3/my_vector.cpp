@@ -85,7 +85,7 @@ void destroy_my_vector(my_vector& v) {
 }
 
 bool looks_consistent_my_vector(const my_vector& v) {
-    return v.store != nullptr && v.size >= 0 && v.size <= v.capacity && v.capacity > 0;
+    return v.store != nullptr && v.size <= v.capacity && v.capacity > 0;
 }
 
 void sort_my_vector(my_vector& v) {
