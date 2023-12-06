@@ -41,12 +41,16 @@ double pop_back_my_vector_element(my_vector& v) {
 }
 
 void set_my_vector_element(my_vector& v, double value, unsigned int index) {
+    if (v.size == 0)
+        throw (string)"get_my_vector_element: Impossibile leggere un elemento da un My_Vector vuoto";
     if (index >= v.size)
         throw (string)"set_my_vector_element: Indice fornito non ammissibile";
     v.store[index] = value;
 }
 
 double get_my_vector_element(const my_vector& v, unsigned int index) {
+    if (v.size == 0)
+        throw (string)"get_my_vector_element: Impossibile leggere un elemento da un My_Vector vuoto";
     if (index >= v.size)
         throw (string)"get_my_vector_element: Indice fornito non ammissibile";
     return v.store[index];
