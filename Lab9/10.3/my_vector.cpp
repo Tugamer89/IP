@@ -6,7 +6,10 @@ using namespace std;
 my_vector create_my_vector(unsigned int capacity) {
     my_vector v;
 
-    v.store = new double[capacity];
+    if (capacity != 0)
+        v.store = new double[capacity];
+    else
+        v.store = nullptr;
     v.capacity = capacity;
     v.size = 0;
 
@@ -70,7 +73,7 @@ void safe_push_back_my_vector_element(my_vector& v, double x) {
     try {
         push_back_my_vector_element(v, x);
     } catch (const string& err) {
-        resize_my_vector(v, v.capacity*2);
+        resize_my_vector(v, max((unsigned int)1, v.capacity*2));
         push_back_my_vector_element(v, x);
     }
 }
