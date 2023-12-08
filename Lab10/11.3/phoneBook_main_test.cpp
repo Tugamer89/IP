@@ -88,6 +88,8 @@ int main() {
     print_phoneBook(book);
     add_contact_to_phoneBook(book, "Ray", "Charles", "721051163211610410132821119710032749799107");
     print_phoneBook(book);
+    add_contact_to_phoneBook(book, "Valli", "Eusebio", "000111222333");
+    print_phoneBook(book);
     //*/
 
     return 0;
