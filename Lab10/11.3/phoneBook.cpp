@@ -47,22 +47,22 @@ void sort_phoneBook_by_surnames(phoneBook& B) {
 
 bool find_phoneBook_contact_by_surname(const phoneBook& B, string s, unsigned long int &pos) {
     pos = B.size();
+    long long int mid;
     long long int low = 0;
     long long int high = B.size() - 1;
 
     while (low <= high) {
-        pos = (high + low) / 2;
+        mid = (high + low) / 2;
 
-        if (B.at(pos).surname == s)
+        if (B.at(mid).surname == s) {
+            pos = mid;
             return true;
-        else if (B.at(pos).surname < s)
-            low = pos + 1;
+        }
+        else if (B.at(mid).surname < s)
+            low = mid + 1;
         else
-            high = pos - 1;
+            high = mid - 1;
     }
-
-    if (pos == B.size()-1 && low > high)
-        pos = B.size();
 
     return false;
 }
