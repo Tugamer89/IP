@@ -7,8 +7,10 @@ void push_contact_in_phoneBook(phoneBook& B, string surname, string name, string
 }
 
 void print_phoneBook(const phoneBook& B) {
+    cout << "***********" << endl;
     for (contact user : B)
         cout << user.surname << " " << user.name << " " << user.phoneNumber << endl;
+    cout << "***********" << endl;
 }
 
 void read_phoneBook_from_file(phoneBook& B, string fileName) {
@@ -37,8 +39,8 @@ void write_phoneBook_to_file(const phoneBook& B, string fileName) {
 }
 
 void sort_phoneBook_by_surnames(phoneBook& B) {
-    for (int i = 0; i < B.size()-1; ++i)
-        for (unsigned int j = 0; j < B.size()-i-1; ++j)
+    for (unsigned long int i = 0; i < B.size()-1; ++i)
+        for (unsigned long int j = 0; j < B.size()-i-1; ++j)
             if (B.at(j).surname > B.at(j+1).surname)
                 swap(B.at(j), B.at(j+1));
 }
@@ -71,7 +73,7 @@ void shift_phoneBook(phoneBook& B, unsigned long int pos) {
         throw (string)"void shift_phoneBook: posizione fuori dai limiti ammissibili";
 
     B.push_back(B.back());
-    for (int i = B.size()-2; i > pos; --i)
+    for (unsigned long int i = B.size()-2; i > pos; --i)
         B.at(i) = B.at(i-1);
 }
 
