@@ -47,25 +47,21 @@ void sort_phoneBook_by_surnames(phoneBook& B) {
 
 bool find_phoneBook_contact_by_surname(const phoneBook& B, string s, unsigned long int &pos) {
     pos = B.size();
-    int low = 0;
-    int high = B.size() - 1;
-    bool found = false;
+    long long int low = 0;
+    long long int high = B.size() - 1;
 
     while (low <= high) {
-        pos = low + (high - low) / 2;
+        pos = (high + low) / 2;
 
-        if (B.at(pos).surname == s) {
-            found = true;
-            pos = pos;
-            break;
-        }
+        if (B.at(pos).surname == s)
+            return true;
         else if (B.at(pos).surname < s)
             low = pos + 1;
         else
             high = pos - 1;
     }
 
-    return found;
+    return false;
 }
 
 void shift_phoneBook(phoneBook& B, unsigned long int pos) {
