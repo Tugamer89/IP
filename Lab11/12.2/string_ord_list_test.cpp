@@ -124,9 +124,9 @@ int main() {
     l2 = nullptr;
     insertElement(l2, "aaaa");
     insertElement(l2, "ahha");
-    insertElement(l2, "akka");
+    insertElement(l2, "affa");
     insertElement(l2, "assa");
-    insertElement(l2, "alla");
+    insertElement(l2, "aaaz");
 
     ordList l3 = concatLists(l, l2);
     printList(l);

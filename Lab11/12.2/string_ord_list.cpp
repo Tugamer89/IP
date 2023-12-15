@@ -204,11 +204,27 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
     ordList cur1 = l1;
     ordList cur2 = l2;
 
-    while (cur1 && cur2) {
-        cell* newCell = new cell;
-        newCell->next = nullptr;
+    while (cur1) {
+        if (preCell && preCell->data == cur1->data) {
+            cur1 = cur1->next;
+            continue;
+        }
 
-        // code here
+        while (cur2 && cur1->data < cur2->data)
+            cur2 = cur2->next;
+
+        if (!cur2)
+            break;
+
+        if (cur2->data != cur1->data) {
+            cur1 = cur1->next;
+            continue;
+        }
+
+        cell* newCell = new cell;
+        newCell->data = cur1->data;
+        newCell->next = nullptr;
+        cur1 = cur1->next;
 
         if (preCell)
             preCell->next = newCell;
