@@ -31,6 +31,7 @@ void read(list& l) {
     string elem;
 
     while (true) {
+        cout << "Inserisci elemento: ";
         cin >> elem;
         if (elem == "STOP!")
             break;
