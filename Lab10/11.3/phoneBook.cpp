@@ -14,6 +14,7 @@ void print_phoneBook(const phoneBook& B) {
 }
 
 void read_phoneBook_from_file(phoneBook& B, string fileName) {
+    B.clear();
     ifstream infile(fileName);
 
     int n;
@@ -70,6 +71,9 @@ bool find_phoneBook_contact_by_surname(const phoneBook& B, string s, unsigned lo
 void shift_phoneBook(phoneBook& B, unsigned long int pos) {
     if (pos > B.size())
         throw (string)"void shift_phoneBook: posizione fuori dai limiti ammissibili";
+
+    if (B.size() == 0)
+        return;
 
     B.push_back(B.back());
     for (unsigned long int i = B.size()-2; i > pos; --i)

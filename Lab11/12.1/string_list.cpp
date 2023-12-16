@@ -70,7 +70,7 @@ string getElem(const list l, unsigned int i) {
     list tmp = l;
     unsigned int j = 0;
     
-    while (j <= i && tmp) {
+    while (tmp) {
         if (j++ == i)
             return tmp->data;
         tmp = tmp->next;
