@@ -27,7 +27,6 @@ void insertElement(ordList& l, string s) {
 }
 
 void readList(ordList& l) {
-    ordList tmp = l;
     string input;
 
     while (true) {
