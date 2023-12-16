@@ -127,6 +127,8 @@ int main() {
     insertElement(l2, "affa");
     insertElement(l2, "assa");
     insertElement(l2, "aaaz");
+    insertElement(l, "abba");
+    insertElement(l, "acca");
 
     ordList l3 = concatLists(l, l2);
     printList(l);
@@ -141,7 +143,6 @@ int main() {
     printList(l3);
     cout << "***********" << endl;
 
-    exit(0);
     // test of unionLists
     l3 = intersectLists(l, l2);
     printList(l);

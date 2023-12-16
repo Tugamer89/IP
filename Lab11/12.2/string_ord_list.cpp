@@ -4,6 +4,12 @@
 
 using namespace std;
 
+static cell* initNewCell(const string& elem, cell* next = nullptr) {
+    cell* newCell = new cell;
+    *newCell = cell{elem, next};
+    return newCell;
+}
+
 void insertElement(ordList& l, string s) {
     ordList preCell = nullptr;
     ordList currCell = l;
@@ -13,13 +19,11 @@ void insertElement(ordList& l, string s) {
         currCell = currCell->next;
     }
 
-    cell* newCell = new cell;
+    cell* newCell = initNewCell(s, currCell);
     if (preCell)
         preCell->next = newCell;
     else
         l = newCell;
-    newCell->data = s;
-    newCell->next = currCell;
 }
 
 void readList(ordList& l) {
@@ -67,7 +71,7 @@ string getElement(const ordList& l, unsigned int i) {
     ordList tmp = l;
     unsigned int j = 0;
     
-    while (j <= i && tmp) {
+    while (tmp) {
         if (j++ == i)
             return tmp->data;
         tmp = tmp->next;
@@ -159,15 +163,14 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
     ordList cur2 = l2;
 
     while (cur1 && cur2) {
-        cell* newCell = new cell;
-        newCell->next = nullptr;
+        cell* newCell;
 
         if (cur1->data <= cur2->data) {
-            newCell->data = cur1->data;
+            newCell = initNewCell(cur1->data);
             cur1 = cur1->next;
         }
         else {
-            newCell->data = cur2->data;
+            newCell = initNewCell(cur2->data);
             cur2 = cur2->next;
         }
 
@@ -181,9 +184,7 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
 
     ordList cur = cur1 ? cur1 : cur2;
     while (cur) {
-        cell* newCell = new cell;
-        newCell->next = nullptr;
-        newCell->data = cur->data;
+        cell* newCell = initNewCell(cur->data);
         cur = cur->next;
         
         if (preCell)
@@ -197,6 +198,10 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
     return list;
 }
 
+static inline bool shouldInsert_union(const ordList& current, const ordList& preCell) {
+    return !preCell || current->data > preCell->data;
+}
+
 ordList unionLists(const ordList& l1, const ordList& l2) {
     ordList list = nullptr;
     cell* preCell = nullptr;
@@ -204,28 +209,39 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
     ordList cur1 = l1;
     ordList cur2 = l2;
 
-    while (cur1) {
-        if (preCell && preCell->data == cur1->data) {
-            cur1 = cur1->next;
-            continue;
-        }
+    while (cur1 && cur2) {
+        cell* newCell;
 
-        while (cur2 && cur1->data < cur2->data)
+        bool insertElement = false;
+        if (cur1->data < cur2->data) {
+            insertElement = shouldInsert_union(cur1, preCell);
+            if (insertElement)
+                newCell = initNewCell(cur1->data);
+            cur1 = cur1->next;
+        }
+        else {
+            insertElement = shouldInsert_union(cur2, preCell);
+            if (insertElement)
+                newCell = initNewCell(cur2->data);
             cur2 = cur2->next;
-
-        if (!cur2)
-            break;
-
-        if (cur2->data != cur1->data) {
-            cur1 = cur1->next;
-            continue;
         }
 
-        cell* newCell = new cell;
-        newCell->data = cur1->data;
-        newCell->next = nullptr;
-        cur1 = cur1->next;
+        if (!insertElement)
+            continue;
 
+        if (preCell)
+            preCell->next = newCell;
+        preCell = newCell; 
+
+        if (!list)
+            list = preCell;
+    }
+
+    ordList cur = cur1 ? cur1 : cur2;
+    while (cur) {
+        cell* newCell = initNewCell(cur->data);
+        cur = cur->next;
+        
         if (preCell)
             preCell->next = newCell;
         preCell = newCell; 
@@ -238,5 +254,39 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
 }
 
 ordList intersectLists(const ordList &l1, const ordList &l2) {
-    
+    ordList list = nullptr;
+    cell* preCell = nullptr;
+
+    ordList cur1 = l1;
+    ordList cur2 = l2;
+
+    while (cur1) {
+        if (preCell && preCell->data == cur1->data) {
+            cur1 = cur1->next;
+            continue;
+        }
+
+        while (cur2 && cur1->data > cur2->data)
+            cur2 = cur2->next;
+
+        if (!cur2)
+            break;
+
+        if (cur2->data != cur1->data) {
+            cur1 = cur1->next;
+            continue;
+        }
+
+        cell* newCell = initNewCell(cur1->data);
+        cur1 = cur1->next;
+
+        if (preCell)
+            preCell->next = newCell;
+        preCell = newCell; 
+
+        if (!list)
+            list = preCell;
+    }
+
+    return list;
 }
