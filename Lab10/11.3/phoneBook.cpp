@@ -61,7 +61,7 @@ bool find_phoneBook_contact_by_surname(const phoneBook& B, string s, unsigned lo
             high = pos - 1;
     }
 
-    if (pos == B.size()-1 && low == high)
+    if (B.back().surname < s)
         pos = B.size();
 
     return false;
