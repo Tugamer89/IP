@@ -43,13 +43,20 @@ insieme_di_turisti UnioneTraInsiemi(const insieme_di_turisti& l1, const insieme_
     l3.data = new turista[l3.capacity];
 
     int index = 0;
-    for (int i = 0; i < l1.size; ++i) {
-        for (int j = 0; j < l2.size; ++j) {
-            if (StessoTurista(l2.data[j], l1.data[i])) {
-                l3.data[index++] = l2.data[j];
-                ++l3.size;
+    for (int i = 0; i < l1.size + l2.size; ++i) {
+        bool needToInsert = true;
+        turista elem = i < l1.size ? l1.data[i] : l2.data[i - l1.size];
+
+        for (int j = 0; j < l3.size; ++j) {
+            if (StessoTurista(elem, l3.data[j])) {
+                needToInsert = false;
                 break;
             }
+        }
+
+        if (needToInsert) {
+            l3.data[index++] = elem;
+            ++l3.size;
         }
     }
 
