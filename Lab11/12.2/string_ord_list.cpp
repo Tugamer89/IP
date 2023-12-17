@@ -197,10 +197,6 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
     return list;
 }
 
-static inline bool shouldInsert_union(const ordList& current, const ordList& preCell) {
-    return !preCell || current->data > preCell->data;
-}
-
 ordList unionLists(const ordList& l1, const ordList& l2) {
     ordList list = nullptr;
     cell* preCell = nullptr;
@@ -209,28 +205,24 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
     ordList cur2 = l2;
 
     while (cur1 && cur2) {
-        cell* newCell;
+        ordList curTmp;
 
-        bool insertElement = false;
         if (cur1->data < cur2->data) {
-            insertElement = shouldInsert_union(cur1, preCell);
-            if (insertElement)
-                newCell = initNewCell(cur1->data);
+            curTmp = cur1;
             cur1 = cur1->next;
         }
         else {
-            insertElement = shouldInsert_union(cur2, preCell);
-            if (insertElement)
-                newCell = initNewCell(cur2->data);
+            curTmp = cur2;
             cur2 = cur2->next;
         }
 
-        if (!insertElement)
+        if (preCell && curTmp->data <= preCell->data)
             continue;
-
+        
+        cell* newCell = initNewCell(curTmp->data);
         if (preCell)
             preCell->next = newCell;
-        preCell = newCell; 
+        preCell = newCell;
 
         if (!list)
             list = preCell;
