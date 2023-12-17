@@ -2,28 +2,28 @@
 
 using namespace std;
 
-struct indirizzo {
+struct Indirizzo {
     string via;
-    string numCivico;
-    string cap;
+    int numCivico;
+    string CAP;
     string citta;
 };
 
-struct cliente {
+struct Cliente {
     string codFiscale;
     string cognome;
     string nome;
-    indirizzo indiriz;
+    Indirizzo indirizzo;
 };
 
-bool sameZone(const cliente& c1, const cliente& c2) {
-    return c1.indiriz.cap == c2.indiriz.cap;
+bool sameZone(const Cliente& c1, const Cliente& c2) {
+    return c1.indirizzo.CAP == c2.indirizzo.CAP;
 }
 
 int main() {
-    cliente c1 = {"AAA123AAA", "Rossi", "Mario", {"via Roma", "18", "000123", "Roma"}};
-    cliente c2 = {"BBB321BBB", "Rossello", "Mariuccio", {"via Napoli", "43", "01230", "Catanzaro"}};
-    cliente c3 = {"CCC000CCC", "Samuel", "Nik", {"via Milazzo", "2", "000123", "Roma"}};
+    Cliente c1 = {"AAA123AAA", "Rossi", "Mario", {"via Roma", 18, "000123", "Roma"}};
+    Cliente c2 = {"BBB321BBB", "Rossello", "Mariuccio", {"via Napoli", 43, "01230", "Catanzaro"}};
+    Cliente c3 = {"CCC000CCC", "Samuel", "Nik", {"via Milazzo", 2, "000123", "Roma"}};
 
     cout << boolalpha;
     cout << c1.nome << " " << c1.cognome << " e " << c2.nome << " " << c2.cognome << " abitano nella stessa zona? " << sameZone(c1, c2) << endl;
