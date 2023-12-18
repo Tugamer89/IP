@@ -7,17 +7,10 @@ typedef struct cell {
     cell *next;
 } *lista;
 
-int countElems(lista list, int elem) {
-    int count = 0;
-
-    while (list != nullptr) {
-        if (list->head == elem)
-            ++count;
-
-        list = list->next;
-    }
-
-    return count;
+int countElems(const lista& list) {
+    if (!list)
+        return 0;
+    return 1 + countElems(list->next);
 }
 
 bool areAllElemsEven(lista list) {
@@ -54,7 +47,7 @@ int main() {
     cout << endl;
 
     cout << boolalpha;
-    cout << "Ci sono " << countElems(l, 4) << " elementi \"4\"" << endl;
+    cout << "Ci sono " << countElems(l) << " elementi" << endl;
     cout << "Tutti gli elementi sono pari? " << areAllElemsEven(l) << endl;
 
     return 0;

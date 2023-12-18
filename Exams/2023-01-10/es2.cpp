@@ -25,10 +25,7 @@ void enqueue(clientsTail& tail, const Cliente& client) {
 }
 
 void dequeue(clientsTail& tail) {
-    for (int i = 0; i < tail.size()-1; ++i)
-        tail.at(i) = tail.at(i+1);
-
-    tail.pop_back();
+    tail.erase(tail.begin());
 }
 
 int main() {

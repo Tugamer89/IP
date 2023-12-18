@@ -10,9 +10,7 @@ void dequeue(vector<Elem>& coda);
 Elem front(const vector<Elem>& coda);
 
 void dequeue(vector<Elem>& coda) {
-    for (int i = 0; i < coda.size()-1; ++i)
-        coda[i] = coda[i+1];
-    coda.pop_back();
+    coda.erase(coda.begin());
 }
 
 int main() {
