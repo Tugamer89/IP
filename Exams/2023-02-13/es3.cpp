@@ -8,25 +8,17 @@ typedef struct Elem {
 } *Insieme;
 
 void insertNewElem(Insieme& l, int elem) {
-    if (!l) {
-        l = new Elem;
-        l->head = elem;
-        l->next = nullptr;
-        return;
-    }
-
-    Insieme preCur = nullptr;
     Insieme cur = l;
     while (cur) {
         if (cur->head == elem)
             return;
-        preCur = cur;
         cur = cur->next;
     }
 
-    preCur->next = new Elem;
-    preCur->next->head = elem;
-    preCur->next->next = nullptr;
+    Insieme tmp = l;
+    l = new Elem;
+    l->head = elem;
+    l->next = tmp;
 }
 
 void printInsieme(const Insieme& ins) {
