@@ -38,6 +38,8 @@ void inserisciCasella(vector<Casella>& vec, const Casella& cas) {
 }
 
 int maxAmpiezza(const vector<Casella>& vec) {
+    if (vec.empty())
+        return 0;
     int left = TAB_SIZE;
     int right = 0;
     for (Casella cas : vec) {
