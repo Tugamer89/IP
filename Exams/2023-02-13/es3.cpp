@@ -15,10 +15,10 @@ void insertNewElem(Insieme& l, int elem) {
         cur = cur->next;
     }
 
-    Insieme tmp = l;
+    cur = l;
     l = new Elem;
     l->head = elem;
-    l->next = tmp;
+    l->next = cur;
 }
 
 void printInsieme(const Insieme& ins) {
