@@ -7,12 +7,45 @@ typedef struct cell {
     cell* next;
 } *list;
 
-cell* concatLists(list l1, list l2) {
-    list l3 = nullptr;
+string concatLists(const list l) {
+    if (!l)
+        throw (string)"la lista è vuota";
+    
+    if (l->next)
+        return l->head + concatLists(l->next);
+    return l->head;
+}
 
-    // todo recorsiva
+int listSize(const list l) {
+    if (!l)
+        return 0;
+    return listSize(l->next) + 1;
+}
 
-    return l3;
+bool atLeastOneEcco(const list l) {
+    if (!l)
+        throw (string)"la lista è vuota";
+
+    do {
+        if (l->head == "ecco")
+            return true;
+        l = l->next;
+    } while(l);
+
+    return false;
+}
+
+bool allEcco(const list l) {
+    if (!l)
+        throw (string)"la lista è vuota";
+
+    do {
+        if (l->head != "ecco")
+            return false;
+        l = l->next;
+    } while(l);
+
+    return true;
 }
 
 int main() {

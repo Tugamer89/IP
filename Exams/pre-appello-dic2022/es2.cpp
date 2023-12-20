@@ -25,6 +25,19 @@ vector<unsigned int> allDivisors(unsigned int n) {
 }
 
 int main() {
+    unsigned int n = 50;
+    vector<unsigned int> mul = allMultiples(n);
+    vector<unsigned int> div = allDivisors(n);
+
+    cout << "I primi " << n << " multiplit di " << n << " sono: ";
+    for (unsigned int a : mul)
+        cout << a << " ";
+    cout << endl;
+
+    cout << "I divisori di " << n << " sono: ";
+    for (unsigned int a : div)
+        cout << a << " ";
+    cout << endl;
 
     return 0;
 }
