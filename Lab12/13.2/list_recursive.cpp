@@ -59,7 +59,7 @@ bool recursive_isElementInOrderedList(const list& l, T x) {
     return l->data == x || recursive_isElementInOrderedList(l->next, x);
 }
 
-unsigned recursive_ListLength(const list& l) {
+unsigned int recursive_ListLength(const list& l) {
     if (!l)
         return 0;
     return recursive_ListLength(l->next) + 1;
