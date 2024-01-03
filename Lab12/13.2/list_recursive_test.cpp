@@ -75,5 +75,6 @@ int main() {
     cout << recursive_removeElemFromOrderedList(l, -7) << endl;
     printList(l);
 
+    recursive_deleteAllElementsFromList(l);
     return 0;
 }
