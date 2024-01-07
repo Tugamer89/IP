@@ -4,12 +4,6 @@
 
 using namespace std;
 
-static cell* initNewCell(const string& elem, cell* next = nullptr) {
-    cell* newCell = new cell;
-    *newCell = cell{elem, next};
-    return newCell;
-}
-
 void insertElement(ordList& l, string s) {
     ordList preCell = nullptr;
     ordList currCell = l;
@@ -19,7 +13,7 @@ void insertElement(ordList& l, string s) {
         currCell = currCell->next;
     }
 
-    cell* newCell = initNewCell(s, currCell);
+    cell* newCell = new cell{s, currCell};
     if (preCell)
         preCell->next = newCell;
     else
@@ -165,11 +159,11 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
         cell* newCell;
 
         if (cur1->data <= cur2->data) {
-            newCell = initNewCell(cur1->data);
+            newCell = new cell{cur1->data, nullptr};
             cur1 = cur1->next;
         }
         else {
-            newCell = initNewCell(cur2->data);
+            newCell = new cell{cur2->data, nullptr};
             cur2 = cur2->next;
         }
 
@@ -183,7 +177,7 @@ ordList concatLists(const ordList& l1, const ordList& l2) {
 
     ordList cur = cur1 ? cur1 : cur2;
     while (cur) {
-        cell* newCell = initNewCell(cur->data);
+        cell* newCell = new cell{cur->data, nullptr};
         cur = cur->next;
         
         if (preCell)
@@ -219,7 +213,7 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
         if (preCell && curTmp->data <= preCell->data)
             continue;
         
-        cell* newCell = initNewCell(curTmp->data);
+        cell* newCell = new cell{curTmp->data, nullptr};
         if (preCell)
             preCell->next = newCell;
         preCell = newCell;
@@ -230,7 +224,7 @@ ordList unionLists(const ordList& l1, const ordList& l2) {
 
     ordList cur = cur1 ? cur1 : cur2;
     while (cur) {
-        cell* newCell = initNewCell(cur->data);
+        cell* newCell = new cell{cur->data, nullptr};
         cur = cur->next;
         
         if (preCell)
@@ -268,7 +262,7 @@ ordList intersectLists(const ordList &l1, const ordList &l2) {
             continue;
         }
 
-        cell* newCell = initNewCell(cur1->data);
+        cell* newCell = new cell{cur1->data, nullptr};
         cur1 = cur1->next;
 
         if (preCell)
