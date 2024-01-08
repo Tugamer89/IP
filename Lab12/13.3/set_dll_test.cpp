@@ -46,10 +46,21 @@ int main() {
     insert_set_dll(l2, 1);
     insert_set_dll(l2, 0);
 
-    set_dll l = union_set_dll(list, l2);
+    cout << "A:\t";
     print_set_dll(list);
+    cout << "B:\t";
     print_set_dll(l2);
-    print_set_dll(l);
+    cout << "AuB:\t";
+    print_set_dll(union_set_dll(list, l2));
+    cout << "BuA:\t";
+    print_set_dll(union_set_dll(l2, list));
+    cout << "AuO:\t";
+    print_set_dll(union_set_dll(list, nullptr));
+    cout << "OuA:\t";
+    print_set_dll(union_set_dll(nullptr, list));
+    cout << "OuO:\t";
+    print_set_dll(union_set_dll(nullptr, nullptr));
+
 
     return 0;
 }

@@ -35,11 +35,8 @@ void insert_set_dll(set_dll& s, int v) {
 }
 
 void print_set_dll(const set_dll& s) {
-    if (!s)
-        return;
-
     set_dll tmp = s;
-    while (true) {
+    while (tmp) {
         cout << tmp->data;
         tmp = tmp->next;
         if (tmp == s)
@@ -73,41 +70,33 @@ set_dll union_set_dll(const set_dll& s1, const set_dll& s2) {
     set_dll cur3 = s3;
 
     while (cur1 && cur2) {
-        set_dll tmp;
         bool isTheFirst = cur1->data < cur2->data;
+        const set_dll s = isTheFirst ? s1 : s2;
+        set_dll* cur = isTheFirst ? &cur1 : &cur2;
+        *cur = (*cur)->next;
 
-        if (isTheFirst) {
-            tmp = cur1;
-            cur1 = cur1->next;
-        }
-        else {
-            tmp = cur2;
-            cur2 = cur2->next;
-        }
-
-        if (cur3 && tmp->data <= cur3->data) {
-            if (isTheFirst ? cur1 == s1 : cur2 == s2)
+        if (cur3 && (*cur)->prev->data <= cur3->data) {
+            if (*cur == s)
                 break;
             continue;
         }
         
         if (!cur3) {
-            cur3 = new set_cell{tmp->data};
+            cur3 = new set_cell{(*cur)->prev->data};
             cur3->next = cur3->prev = cur3;
             s3 = cur3;
         }
         else {
-            cur3->next = new set_cell{tmp->data, cur3->next, cur3};
+            cur3->next = new set_cell{(*cur)->prev->data, cur3->next, cur3};
             cur3->next->next->prev = cur3;
         }
         
-        cur3 = cur3->next;            
-
-        if (isTheFirst ? cur1 == s1 : cur2 == s2)
-            break;
+        cur3 = cur3->next;
+        if (*cur == s)
+            *cur = nullptr;
     }
 
-    set_dll cur = cur1 != s1 ? cur1 : cur2;
+    set_dll cur = cur1 ? cur1 : cur2;
     while (cur) {
         if (!cur3) {
             cur3 = new set_cell{cur->data};
@@ -119,10 +108,10 @@ set_dll union_set_dll(const set_dll& s1, const set_dll& s2) {
             cur3->next->next->prev = cur3;
         }
 
-        cur3 = cur3->next;             
-        cur = cur->next;
         if (cur == s1 || cur == s2)
             break;
+        cur3 = cur3->next;
+        cur = cur->next;
     }
 
     return s3;
