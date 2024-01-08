@@ -77,10 +77,10 @@ set_dll union_set_dll(const set_dll& s1, const set_dll& s2) {
 
         if (cur3 && (*cur)->prev->data <= cur3->data) {
             if (*cur == s)
-                break;
+                *cur = nullptr;
             continue;
         }
-        
+
         if (!cur3) {
             cur3 = new set_cell{(*cur)->prev->data};
             cur3->next = cur3->prev = cur3;
@@ -98,28 +98,65 @@ set_dll union_set_dll(const set_dll& s1, const set_dll& s2) {
 
     set_dll cur = cur1 ? cur1 : cur2;
     while (cur) {
-        if (!cur3) {
-            cur3 = new set_cell{cur->data};
-            cur3->next = cur3->prev = cur3;
-            s3 = cur3;
-        }
-        else {
-            cur3->next = new set_cell{cur->data, cur3->next, cur3};
-            cur3->next->next->prev = cur3;
+        cur = cur->next;
+
+        if (cur3 && cur->prev->data == cur3->data) {
+            if (cur == s1 || cur == s2)
+                cur = nullptr;
+            continue;
         }
 
-        if (cur == s1 || cur == s2)
-            break;
+        if (!cur3) {
+            cur3 = new set_cell{cur->prev->data};
+            s3 = cur3->next = cur3->prev = cur3;
+        }
+        else {
+            cur3->next = new set_cell{cur->prev->data, s3, cur3};
+            s3->prev = cur3;
+        }
+
         cur3 = cur3->next;
-        cur = cur->next;
+        if (cur == s1 || cur == s2)
+            cur = nullptr;
     }
 
     return s3;
 }
 
 set_dll intersect_set_dll(const set_dll& s1, const set_dll& s2) {
-    return nullptr;
+    set_dll s3 = nullptr;
+    set_dll cur1 = s1;
+    set_dll cur2 = s2;
+    set_dll cur3 = s3;
+    
+    while (cur1 && cur2) {
+        while (cur2->data < cur1->data) {
+            cur2 = cur2->next;
+            if (cur2 == s2)
+                break;
+        }
+
+        cur1 = cur1->next;
+
+        if (cur2->data != cur1->prev->data) {
+            if (cur1 == s1)
+                break;
+            continue;
+        }
+
+        if (!cur3) {
+            cur3 = new set_cell{cur2->data};
+            s3 = cur3->next = cur3->prev = cur3;
+        }
+        else {
+            cur3->next = new set_cell{cur2->data, s3, cur3};
+            s3->prev = cur3;
+        }
+
+        cur3 = cur3->next;
+        if (cur1 == s1)
+            break;
+    }
+
+    return s3;
 }
-// ritorna un set che rappresenta l'intersezione dei set s1 e s2
-// NB: ogni elemento del nuovo set deve essere un duplicato di quelli contenuti in s1 e s2
-// in questo modo sia s1 che s2 non subiscono alcuna modifica
