@@ -11,13 +11,17 @@ void inserimentoInTesta(List& list, City newCity) {
 string stampaAndata(List list) {
     if (!list)
         return "";
-    return list->city + (list->next ? "," : "") + stampaAndata(list->next);
+    if (!list->next)
+        return list->city;
+    return list->city + "," + stampaAndata(list->next);
 }
 
 string stampaRitorno(List list) {
     if (!list)
         return "";
-    return stampaRitorno(list->next) + (list->next ? "," : "") + list->city;
+    if (!list->next)
+        return list->city;
+    return stampaRitorno(list->next) + "," + list->city;
 }
 
 string stampaAdiacenti(List list, City newCity) {
