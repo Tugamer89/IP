@@ -59,6 +59,7 @@ int main() {
     cout << stampaAdiacenti(l2, "Napoli") << endl;
     cout << stampaAdiacenti(l3, "Vicenza") << endl;
     cout << stampaAdiacenti(l3, "Catanzaro") << endl;
+    cout << stampaAdiacenti(nullptr, "Genova") << endl;
 
     return 0;
 }
