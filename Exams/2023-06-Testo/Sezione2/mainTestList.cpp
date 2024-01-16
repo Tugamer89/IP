@@ -16,6 +16,8 @@ static void printList(List l) {
 
 int main() {
     List l = nullptr;
+    List l2 = nullptr;
+    List l3 = nullptr;
 
     // test of inserimentoInTesta
     printDivisor();
@@ -24,18 +26,29 @@ int main() {
     inserimentoInTesta(l, "Venezia");
     inserimentoInTesta(l, "Pisa");
     inserimentoInTesta(l, "Aosta");
+    inserimentoInTesta(l2, "Napoli");
+    inserimentoInTesta(l3, "Vicenza");
+    inserimentoInTesta(l3, "Catanzaro");
 
     printList(l);
+    cout << endl;
+    printList(l2);
+    cout << endl;
+    printList(l3);
 
     // test of stampaAndata
     printDivisor();
-    cout << stampaAndata(l) << endl;
     cout << stampaAndata(nullptr) << endl;
+    cout << stampaAndata(l3) << endl;
+    cout << stampaAndata(l2) << endl;
+    cout << stampaAndata(l) << endl;
 
     // test of stampaRitorno
     printDivisor();
-    cout << stampaRitorno(l) << endl;
     cout << stampaRitorno(nullptr) << endl;
+    cout << stampaRitorno(l3) << endl;
+    cout << stampaRitorno(l2) << endl;
+    cout << stampaRitorno(l) << endl;
 
     // test of stampaAdiacenti
     printDivisor();
@@ -43,6 +56,9 @@ int main() {
     cout << stampaAdiacenti(l, "Aosta") << endl;
     cout << stampaAdiacenti(l, "Roma") << endl;
     cout << stampaAdiacenti(l, "Napoli") << endl;
+    cout << stampaAdiacenti(l2, "Napoli") << endl;
+    cout << stampaAdiacenti(l3, "Vicenza") << endl;
+    cout << stampaAdiacenti(l3, "Catanzaro") << endl;
 
     return 0;
 }
